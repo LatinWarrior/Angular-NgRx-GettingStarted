@@ -40,9 +40,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
     // TODO: Unsubscribe.
     this.store
-      .pipe(select('products'))
+      .pipe(select(fromProduct.getShowProductCode))
       .subscribe(
-        products => this.displayCode = products.showProductCode
+        showProductCode => this.displayCode = showProductCode
       );
   }
 
