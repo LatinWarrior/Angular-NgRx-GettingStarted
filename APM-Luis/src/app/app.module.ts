@@ -21,6 +21,10 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
 /* Feature Modules */
 import { UserModule } from './user/user.module';
 
+/* NgRx */
+import { EffectsModule } from '@ngrx/effects';
+
+
 @NgModule({
   imports: [
   BrowserModule,
@@ -29,6 +33,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',
       maxAge: 25,

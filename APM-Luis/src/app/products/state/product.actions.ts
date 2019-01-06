@@ -55,7 +55,7 @@ export class InitializeCurrentProduct implements Action {
 
 export type ProductActions = ToggleProductCode
       | SetCurrentProduct
-      | ClearCurrentProduct |
+      | ClearCurrentProduct
       | InitializeCurrentProduct 
       | Load
       | LoadSuccess
