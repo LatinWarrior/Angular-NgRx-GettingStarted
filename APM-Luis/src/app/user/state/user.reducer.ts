@@ -28,7 +28,8 @@ export const getCurrentUser = createSelector(
 );
 
 export function reducer(state = initialState, action: UserActions): UserState {
-      switch(action.type) {
+      console.log(`action: ${JSON.stringify(action)}`);
+      switch(action.type) {            
             case UserActionTypes.MaskUserName:
                   return {
                         ...state,

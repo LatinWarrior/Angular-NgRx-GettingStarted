@@ -6,7 +6,7 @@ export enum UserActionTypes {
 }
 
 export class MaskUserName implements Action {
-      readonly type: UserActionTypes.MaskUserName;
+      readonly type = UserActionTypes.MaskUserName;
 
       constructor(public payload: boolean)  { }
 }

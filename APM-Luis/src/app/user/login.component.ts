@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkChanged(value: boolean): void {
+    console.log(`value: ${value}`);
     this.store.dispatch(new userActions.MaskUserName(value));
   }
 
