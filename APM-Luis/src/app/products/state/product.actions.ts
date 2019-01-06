@@ -58,5 +58,5 @@ export type ProductActions = ToggleProductCode
       | ClearCurrentProduct |
       | InitializeCurrentProduct 
       | Load
-      | LoadProductSuccess
-      | LoadProductFail;
+      | LoadSuccess
+      | LoadFail;

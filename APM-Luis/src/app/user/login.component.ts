@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Store, select } from '@ngrx/store';
-
 import { AuthService } from './auth.service';
 
+/* NgRx */
+import { Store, select } from '@ngrx/store';
 import * as fromUser from './state/user.reducer';
 import * as fromRoot from './../state/app.state';
+import * as userActions from './state/user.actions';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   templateUrl: './login.component.html',
@@ -28,7 +30,8 @@ export class LoginComponent implements OnInit {
     // TODO: Unsubscribe.
     this.store
       .pipe(select(fromUser.getMaskUserName))
-      .subscribe(maskUserName => this.maskUserName = maskUserName)
+      .subscribe(
+        maskUserName => this.maskUserName = maskUserName
       );
   }
 
@@ -37,10 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkChanged(value: boolean): void {
-    this.store.dispatch({
-      type: 'MASK_USER_NAME',
-      payload: value
-    });
+    this.store.dispatch(new userActions.MaskUserName(value));
   }
 
   login(loginForm: NgForm): void {
