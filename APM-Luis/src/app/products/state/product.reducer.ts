@@ -125,7 +125,7 @@ export function reducer(state = initialState, action: ProductActions): ProductSt
                    };
             case ProductActionTypes.DeleteProductSuccess:
                    const filteredProducts = state.products.filter(
-                         product => action.payload.id !== product.id
+                         product => action.payload !== product.id
                    );
                    return {
                          ...state,
