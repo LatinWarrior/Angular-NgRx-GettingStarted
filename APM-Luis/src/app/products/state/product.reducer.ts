@@ -111,6 +111,28 @@ export function reducer(state = initialState, action: ProductActions): ProductSt
                         ...state,
                         error: action.payload
                   };
+            case ProductActionTypes.CreateProductSuccess:
+                   return {
+                         ...state,
+                         products: [...state.products, action.payload],
+                         currentProductId: action.payload.id,
+                         error: ''
+                   };
+            case ProductActionTypes.CreateProductFail:                   
+                   return {
+                         ...state,
+                         error: action.payload
+                   };
+            case ProductActionTypes.DeleteProductSuccess:
+                   const filteredProducts = state.products.filter(
+                         product => action.payload.id !== product.id
+                   );
+                   return {
+                         ...state,
+                         products: [...filteredProducts],
+                        currentProductId: null,
+                        error: ''
+                   }
             default:
                   return state;
       }

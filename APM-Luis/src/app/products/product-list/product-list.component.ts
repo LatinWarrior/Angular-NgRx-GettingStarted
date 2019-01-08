@@ -32,7 +32,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<fromProduct.State>, private productService: ProductService) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+
+    // Subscribe here because it does not use an async pipe
     this.store
       .pipe(
         select(fromProduct.getCurrentProduct),
@@ -42,12 +44,15 @@ export class ProductListComponent implements OnInit, OnDestroy {
         currentProduct => this.selectedProduct = currentProduct
       );
 
-      this.errorMessage$ = this.store.pipe(select(fromProduct.getError));
+    // Do NOT subscribe here because it used an async pipe
+    this.errorMessage$ = this.store.pipe(select(fromProduct.getError));
+
     this.store.dispatch(new productActions.Load());
 
     // The unsubscribe is being handled by the async pipe in the HTML.
-    this.products$ = this.store.pipe(select(fromProduct.getProducts));      
+    this.products$ = this.store.pipe(select(fromProduct.getProducts));
 
+    // Subscribe here because it does not use an async pipe
     this.store
       .pipe(
         select(fromProduct.getShowProductCode),
